@@ -1,0 +1,18 @@
+#
+# Re¹ení IJC-DU1, 22.3.2010
+# Autor: David Reinberger, FIT
+# 
+
+CC=gcc                           # pøekladaè jazyka C gcc 4.4.1
+CFLAGS=-std=c99 -Wall -pedantic  # parametry pøekladaèe
+
+all: enumtest
+
+error.o: error.c error.h
+	$(CC) $(CFLAGS) -c error.c -o error.o
+edays.o: edays.c edays.h
+	$(CC) $(CFLAGS) -c edays.c -o edays.o
+enumtest.o: enumtest.c error.h edays.h
+	$(CC) $(CFLAGS) -c enumtest.c -o enumtest.o
+enumtest: error.o edays.o enumtest.o
+	$(CC) $(CFLAGS) error.o edays.o enumtest.o -o enumtest
