@@ -1,8 +1,12 @@
 language: c
 compiler:
   - gcc
+before_install:
+  - sudo pip install cpp-coveralls --use-mirrors
 script:
   - cd pokus_repos
   - make
   - cd ../ctest-master
   - make
+after_success:
+  - coveralls --exclude lib --exclude tests
