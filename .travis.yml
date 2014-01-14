@@ -4,3 +4,5 @@ compiler:
 script:
   - cd pokus_repos
   - make
+  - cd ../ctest-master
+  - make
